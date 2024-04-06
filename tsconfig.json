@@ -1,3 +1,69 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "useUnknownInCatchVariables": true,
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src"],
+      "@api": ["./src/app/api"],
+      "@assets": ["./src/app/assets"],
+      "@assets/*": ["./src/app/assets/*"],
+      "@screens": ["./src/app/screens"],
+      "@screens/*": ["./src/app/screens/*"],
+      "@components": [
+        "./src/app/components"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@navigators/*": [
+        "./src/navigators/*"
+      ],
+      "@redux/*": [
+        "./src/redux/*"
+      ],
+      "@theme/*": [
+        "./src/theme/*"
+      ],
+      "@utils/*": [
+        "./src/app/utils/*"
+      ],
+      "@types/*": ["./src/app/types/*"],
+      "@constants": ["./src/constants"],
+      "@ui-modules": ["./src/ui-modules"],
+      "@ui-kit": ["./src/ui-kit"],
+      "@hooks": ["./src/hooks"],
+  
+    }
+  },
+  "exclude": [
+    ".vscode", 
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "include": [
+    "src/**/*",
+    "declarations/*.d.ts",
+    "app.config.js",
+    "configs/jest/jest-setup.config.js"
+  ]
 }
