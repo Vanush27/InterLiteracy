@@ -8,7 +8,7 @@ export function useStyles() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.warning,
+      backgroundColor: theme.colors.grey4,
     },
     text: {
       alignSelf: 'center',

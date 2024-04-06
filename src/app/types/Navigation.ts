@@ -10,7 +10,6 @@ export type TCatalog = {};
 
 export type MainNavigationRoutes = {
   MainScreen: undefined;
-
   BottomNavigator: undefined;
 };
 

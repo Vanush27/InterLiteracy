@@ -5,7 +5,6 @@ import {useStyles} from './Images.useStyles';
 import {DIMENSIONS_WIDTH} from '@constants';
 
 const IMAGE_SIZES = [150, 150, 200, 200, 100, 100];
-// const IMAGE_SIZES = [150, 150, 200, 200, 100, 100, 100, 150];
 
 const Images = () => {
   const {styles} = useStyles();
@@ -13,7 +12,6 @@ const Images = () => {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    // Функция для разделения изображений на ряды с максимальной высотой в каждом ряду
     const createRows = () => {
       let currentRow = [];
       let currentRowWidth = 0;
@@ -33,7 +31,6 @@ const Images = () => {
         }
       });
 
-      // Добавляем последний ряд
       newRows.push({images: currentRow, maxHeight: maxRowHeight});
       setRows(newRows);
     };

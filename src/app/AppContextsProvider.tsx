@@ -1,6 +1,5 @@
 import React, {ReactNode} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-// import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {PersistGate} from 'redux-persist/integration/react';

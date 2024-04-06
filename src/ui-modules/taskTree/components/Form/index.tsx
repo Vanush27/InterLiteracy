@@ -8,6 +8,7 @@ import {launchImageLibrary} from 'react-native-image-picker';
 
 import {useStyles} from './Form.useStyles';
 import {validationSchema} from './Form.schema';
+import DocumentPicker from 'react-native-document-picker';
 
 const Form = () => {
   const {styles} = useStyles();
@@ -24,8 +25,29 @@ const Form = () => {
     });
   };
 
+  const selectFile = async () => {
+    // Opening Document Picker to select one file
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+      });
+      // Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      // Setting the state to show single file attributes
+      setSelectedImage(res);
+    } catch (err) {
+      setSelectedImage(null);
+
+      if (DocumentPicker.isCancel(err)) {
+        alert('Canceled');
+      } else {
+        // For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
   const onSubmit = async values => {
-    console.warn(values, 'wwwwjdjsdvbnm,');
     try {
       const formData = new FormData();
       formData.append('name', values.name);
@@ -34,7 +56,7 @@ const Form = () => {
         uri: selectedImage,
       });
 
-      console.warn(formData, 'formData');
+      console.warn(JSON.stringify(formData), 'formData');
       // const response = await axios.post('YOUR_API_ENDPOINT', formData, {
       //   headers: {
       //     'Content-Type': 'multipart/form-data',
@@ -84,13 +106,13 @@ const Form = () => {
               <ErrorMessage name="description" />
             </Text>
 
-            <Button title="Выбрать изображение" onPress={openImagePicker} />
+            <Button title="Выбрать изображение" onPress={selectFile} />
 
             {selectedImage && (
               <View style={styles.image_wrapper}>
                 <Image
                   resizeMode="contain"
-                  source={{uri: selectedImage}}
+                  source={selectedImage}
                   style={styles.image}
                 />
               </View>
